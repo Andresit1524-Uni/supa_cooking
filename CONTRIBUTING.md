@@ -11,3 +11,13 @@ El repo se manejará por ramas las cuales luego se envían a la principal por me
 6. El informe se puede hacer en el mismo repo, en la carpeta `docs/`
 
 Se hará una revisión grupal para saber quien hace que: no se improvisa.
+
+## Convenciones de programación
+1. Usa las convenciones de nombre oficiales de cada lenguaje. Puedes encontrarlas en internet
+2. No existe un estándar de estilo de código, pero sé consistente con el tuyo
+3. El código (clases, variables, valores) va en inglés, los comentarios en español, el resto también
+4. El juego también está en español
+5. Usa nombres descriptivos y una lógica clara
+6. Si requieres muchos comentarios o mucha memoria, reconsidera
+7. Usa un formateador. Puede ser el de godot-tools, el GDQuest, y para C# también
+8. Pide feedback, especialmente a los admins del proyecto (@Andresit1524 y @DanielADuranC)
