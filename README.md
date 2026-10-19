@@ -5,11 +5,11 @@ Este es nuestro proyecto final para estructuras de datos 2026-2: Un juego de coc
 >
 > Integrantes del proyecto:
 >
-> - Hayran Andrés López
-> - Daniel Alejandro Durán
-> - Andrés Eduardo Sierra
-> - Jeison Steven Guio
-> - David Muñoz Muñoz
+> - Hayran Andrés López (@Andresit1524)
+> - Daniel Alejandro Durán (@DanielADuranC)
+> - Andrés Eduardo Sierra (@asierrapo-un)
+> - Jeison Steven Guio (@Steykwo)
+> - David Muñoz Muñoz (@Dsmm06)
 
 ## Diseño
 
