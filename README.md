@@ -11,6 +11,16 @@ Este es nuestro proyecto final para estructuras de datos 2026-2: Un juego de coc
 > - Jeison Steven Guio (@Steykwo)
 > - David Muñoz Muñoz (@Dsmm06)
 
+## Uso de lenguajes
+Este proyecto usa **Godot 4.7.2 versión .NET** y **.NET 10**. C# será para:
+
+1. Estructuras de datos
+2. Creación de datos de prueba
+3. Medición de tiempos y análisis de complejidad
+4. Cualquier otro uso que lo exiga luego
+
+Se usará GDScript para el resto del juego.
+
 ## Diseño
 
 ```mermaid
