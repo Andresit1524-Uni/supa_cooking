@@ -10,6 +10,7 @@
         "miguelsolorio.symbols",
         "geequlim.godot-tools",
         "cyojkoy.neo-godot-tools",
-        "merenut.ridiculous-coding"
+        "merenut.ridiculous-coding",
+        "github.vscode-pull-request-github"
     ]
 }
