@@ -30,6 +30,16 @@ public class DynamicArray<T> : IEnumerable<T>
     // Verifica si la estructura está vacía
     public bool IsEmpty => _size == 0;
 
+    // Indexador: permite usar azucar sintáctico (arr[idx]) en lugar de los métodos directamente
+    public T this[int index]
+    {
+        get => GetAt(index);
+        set => SetAt(index, value);
+    }
+
+    // Alias para inicializar arreglos directamente (gracias a IEnumerable<T>)
+    public void Add(T item) => AddLast(item);
+
     // Método privado para redimensionar el arreglo cuando se alcanza la capacidad máxima
     private void Resize()
     {
