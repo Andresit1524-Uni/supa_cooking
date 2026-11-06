@@ -12,9 +12,9 @@ using System.Collections.Generic;
 /// </remarks>
 public class DynamicArray<T> : IEnumerable<T>
 {
-    private T[] _data;
-    private int _size;
-    private int _capacity;
+    protected T[] _data;
+    protected int _size;
+    protected int _capacity;
 
     // Constructor para inicializar una nueva lista con una capacidad por defecto
     public DynamicArray(int initialCapacity = 4)
@@ -40,8 +40,8 @@ public class DynamicArray<T> : IEnumerable<T>
     // Alias para inicializar arreglos directamente (gracias a IEnumerable<T>)
     public void Add(T item) => AddLast(item);
 
-    // Método privado para redimensionar el arreglo cuando se alcanza la capacidad máxima
-    private void Resize()
+    // Método protegido para permitir que las estructuras derivadas personalicen el redimensionamiento.
+    protected virtual void Resize()
     {
         _capacity *= 2; // Duplicar la capacidad
         T[] newData = new T[_capacity];

@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace DataStructures;
 
@@ -8,18 +10,21 @@ namespace DataStructures;
 /// <remarks>
 /// Creado por David Muñoz.
 /// </remarks>
+
+// Heredamos de DynamicArray
 public class Stack<T> : DynamicArray<T>
 {
+    //Constructor del Stack
     public Stack(int initialCapacity = 4) : base(initialCapacity)
     {
     }
-    //Push implementando metodos del dinamicArray
+    //Push: añadimos un dato al final de la lista
     public void Push(T item)
     {
         AddLast(item);
-
     }
-    // Pop tambien implementando cositas del dinamic array
+
+    // Pop: Eliminamos el dato al final de la lista
     public T Pop()
     {
         //Por si la pila esta vacia
@@ -29,7 +34,7 @@ public class Stack<T> : DynamicArray<T>
         }
         return RemoveLast();
     }
-
+    // Consultar el ultimo dato del Stack
     public T Peek()
     {
         if (Size == 0)
@@ -38,14 +43,15 @@ public class Stack<T> : DynamicArray<T>
         }
         return this[Size - 1];
     }
+    //Comparar si es igual o no a otro stack
     public bool Equals(Stack<T> pila)
     {
-        if(pila is not Stack<T> other) return false;
-        if(ReferenceEquals(this, other)) return true;
+        if (pila is not Stack<T> other) return false;
+        if (ReferenceEquals(this, other)) return true;
         if (Size != other.Size) return false;
         for (int i = 0; i < Size; i++)
         {
-            if(!this[i].Equals(pila[i])) return false;
+            if (!this[i].Equals(pila[i])) return false;
         }
         return true;
     }
