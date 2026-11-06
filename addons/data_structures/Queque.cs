@@ -16,6 +16,7 @@ public class Queue<T> : DynamicArray<T>
     private int _rear;
 
     public bool IsVoid => _size == 0;
+
     // Constructor de la cola
     public Queue(int initialCapacity = 4) : base(initialCapacity)
     {
@@ -43,7 +44,7 @@ public class Queue<T> : DynamicArray<T>
         return item;
     }
 
-    //Mostramos el primer dato de la pila
+    // Mostramos el primer dato de la pila
     public T Peek()
     {
         if (IsVoid)
@@ -53,7 +54,7 @@ public class Queue<T> : DynamicArray<T>
         return _data[_front];
     }
 
-    //Sobreescribimos resize para actualizar valores de capacity, front y rear
+    // Sobreescribimos resize para actualizar valores de capacity, front y rear
     protected override void Resize()
     {
         int newCapacity = _capacity * 2;
@@ -73,14 +74,7 @@ public class Queue<T> : DynamicArray<T>
     // Es igual a otra cola?
     public bool Equals(Queue<T> que)
     {
-        if (que == null)
-        {
-            return false;
-        }
-        if (ReferenceEquals(this, que))
-        {
-
-        }
+        if (que == null) return false;
         if (_capacity != que._capacity) return false;
         if (Size != que.Size) return false;
         for (int i = 0; i < Size; i++)
