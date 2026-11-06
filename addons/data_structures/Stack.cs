@@ -2,6 +2,12 @@ using System;
 
 namespace DataStructures;
 
+/// <summary>
+/// Stack generico usando un DynamicArray.
+/// </summary>
+/// <remarks>
+/// Creado por David Muñoz.
+/// </remarks>
 public class Stack<T> : DynamicArray<T>
 {
     public Stack(int initialCapacity = 4) : base(initialCapacity)
@@ -13,7 +19,7 @@ public class Stack<T> : DynamicArray<T>
         AddLast(item);
 
     }
-    // Pop tambien implementando cositas dl dinamic array
+    // Pop tambien implementando cositas del dinamic array
     public T Pop()
     {
         //Por si la pila esta vacia
@@ -21,10 +27,7 @@ public class Stack<T> : DynamicArray<T>
         {
             throw new InvalidOperationException("La pila esta vacia");
         }
-        int last = Size - 1;
-        T item = this[last];
-        RemoveLast();
-        return item;
+        return RemoveLast();
     }
 
     public T Peek()
@@ -34,5 +37,16 @@ public class Stack<T> : DynamicArray<T>
             throw new InvalidOperationException("La pila esta vacia");
         }
         return this[Size - 1];
+    }
+    public bool Equals(Stack<T> pila)
+    {
+        if(pila is not Stack<T> other) return false;
+        if(ReferenceEquals(this, other)) return true;
+        if (Size != other.Size) return false;
+        for (int i = 0; i < Size; i++)
+        {
+            if(!this[i].Equals(pila[i])) return false;
+        }
+        return true;
     }
 }
