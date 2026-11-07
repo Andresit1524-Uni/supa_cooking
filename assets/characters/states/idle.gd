@@ -16,13 +16,18 @@ func start() -> void:
 
 
 func physics_update(_delta: float) -> void:
-	if not character:
-		return
+	if not character: return
 
 	var direction := character.get_input_vector()
+
+	# Caminata
 	if direction != Vector2.ZERO:
 		to_state.emit(CharacterWalk)
 		return
+
+	# Interacción
+	if Input.is_action_just_pressed(&"interact"):
+		character.interact()
 
 	character.velocity = Vector2.ZERO
 	character.move_and_slide()

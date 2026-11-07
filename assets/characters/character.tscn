@@ -22,6 +22,13 @@ autoplay = "idle_front"
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_t44h5")
 
+[node name="RayCast" type="RayCast2D" parent="." unique_id=1827380809]
+position = Vector2(0, 5)
+target_position = Vector2(0, 15)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
 [node name="States" type="Node" parent="." unique_id=2003824761 node_paths=PackedStringArray("controlled_node", "default_state")]
 script = ExtResource("2_l3hlb")
 controlled_node = NodePath("..")
