@@ -8,11 +8,13 @@ var character: Character
 
 func start() -> void:
 	character = controlled_node as Character
-	await character.ready
 
-	if character:
-		character.velocity = Vector2.ZERO
-		character.play_animation(&"idle")
+	# Primer arranque del personaje para evitar crashes
+	if not character.is_node_ready():
+		await character.ready
+
+	character.velocity = Vector2.ZERO
+	character.play_animation(&"idle")
 
 
 func physics_update(_delta: float) -> void:

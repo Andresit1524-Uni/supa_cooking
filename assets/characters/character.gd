@@ -4,7 +4,6 @@ class_name Character extends CharacterBody2D
 
 ## Se emite cuando el jugador interactúa con un objeto válido.
 ## Usado en [CharacterIdle]
-@warning_ignore("unused_signal")
 signal object_interact(object: CollisionObject2D)
 
 
@@ -31,7 +30,7 @@ const Directions = {
 ## Dirección en la que apunta el personaje, para sus animaciones
 var facing_direction: StringName = Directions.FRONT
 ## ! Debug: Tween para el color del raycast
-var _debug_tween := create_tween()
+var _debug_tween: Tween
 
 
 ## Obtiene la dirección del movimiento de forma centralizada
