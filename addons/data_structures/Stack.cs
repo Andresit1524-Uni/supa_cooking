@@ -29,20 +29,14 @@ public class Stack<T> : DynamicArray<T>
     public T Pop()
     {
         // Por si la pila esta vacia
-        if (Size == 0)
-        {
-            throw new InvalidOperationException("La pila esta vacia");
-        }
+        if (Size == 0) throw new InvalidOperationException("La pila esta vacia");
         return RemoveLast();
     }
 
     // Consultar el ultimo dato del Stack
     public T Peek()
     {
-        if (Size == 0)
-        {
-            throw new InvalidOperationException("La pila esta vacia");
-        }
+        if (Size == 0) throw new InvalidOperationException("La pila esta vacia");
         return this[Size - 1];
     }
 

@@ -38,7 +38,7 @@ public class Queue<T> : DynamicArray<T>
     // Desencolamos al inicio de la pila
     public T Dequeue()
     {
-        if (IsVoid) throw new InvalidOperationException("Queque is void");
+        if (IsVoid) throw new InvalidOperationException("La cola esta vacia");
         T item = _data[_front];
         _front = (_front + 1) % _capacity;
         return item;
@@ -47,10 +47,7 @@ public class Queue<T> : DynamicArray<T>
     // Mostramos el primer dato de la pila
     public T Peek()
     {
-        if (IsVoid)
-        {
-            throw new InvalidOperationException("Queque is void");
-        }
+        if (IsVoid) throw new InvalidOperationException("La cola esta vacia");
         return _data[_front];
     }
 
@@ -60,10 +57,7 @@ public class Queue<T> : DynamicArray<T>
         int newCapacity = _capacity * 2;
         T[] newData = new T[newCapacity];
 
-        for (int i = 0; i < _size; i++)
-        {
-            newData[i] = _data[(_front + i) % _capacity];
-        }
+        for (int i = 0; i < _size; i++) newData[i] = _data[(_front + i) % _capacity];
 
         _data = newData;
         _capacity = newCapacity;
