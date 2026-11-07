@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://kessanjc54ud"]
+
+[ext_resource type="SpriteFrames" uid="uid://b3hopty65wxmd" path="res://assets/characters/raccoon_frames.tres" id="1_odcv2"]
+[ext_resource type="Script" uid="uid://bmwsqkgtyl6id" path="res://assets/characters/character.gd" id="1_yufif"]
+[ext_resource type="Script" uid="uid://bxs53es51hc4u" path="res://addons/state_machine/state_machine.gd" id="2_l3hlb"]
+[ext_resource type="Script" uid="uid://vjxc8slu31e3" path="res://assets/characters/states/idle.gd" id="3_xgakl"]
+[ext_resource type="Script" uid="uid://cmpdfee8bl1r8" path="res://assets/characters/states/walk.gd" id="4_w4adg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t44h5"]
+radius = 5.0
+
+[node name="Character" type="CharacterBody2D" unique_id=241359676]
+script = ExtResource("1_yufif")
+speed = 64.0
+
+[node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=801409164]
+sprite_frames = ExtResource("1_odcv2")
+animation = &"idle_front"
+autoplay = "idle_front"
+
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1051652300]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_t44h5")
+
+[node name="States" type="Node" parent="." unique_id=2003824761 node_paths=PackedStringArray("controlled_node", "default_state")]
+script = ExtResource("2_l3hlb")
+controlled_node = NodePath("..")
+default_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://bxs53es51hc4u"
+
+[node name="Idle" type="Node" parent="States" unique_id=188678574]
+script = ExtResource("3_xgakl")
+
+[node name="Walk" type="Node" parent="States" unique_id=2119480779]
+script = ExtResource("4_w4adg")
