@@ -2,6 +2,17 @@
 class_name Character extends CharacterBody2D
 
 
+## Especies disponibles
+enum Species {
+	BIRD_BLUE,
+	BIRD_WHITE,
+	CAR_ORANGE,
+	CAR_GRAY,
+	FOX,
+	RACCOON,
+}
+
+
 ## Se emite cuando el jugador interactúa con un objeto válido.
 ## Usado en [CharacterIdle]
 signal object_interact(object: CollisionObject2D)
@@ -20,12 +31,20 @@ const Directions = {
 @export var speed: float = 100.0
 ## Tamaño del raycast
 @export var raycast_size: float = 15.0
+## Especie del personaje
+@export var species := Species.RACCOON:
+	set = set_species
+
+@export_group("Dependencias")
+## Animaciones de cada especie
+@export var character_species: Dictionary[Species, SpriteFrames]
 
 
 @onready var collision_shape: CollisionShape2D = $"CollisionShape"
 @onready var sprites: AnimatedSprite2D = $"Sprites"
 @onready var raycast: RayCast2D = $"RayCast"
 @onready var states: StateMachine = $States
+
 
 ## Dirección en la que apunta el personaje, para sus animaciones
 var facing_direction: StringName = Directions.FRONT
@@ -51,9 +70,25 @@ func update_facing_dir(direction: Vector2) -> void:
 		facing_direction = Directions.FRONT if direction.y > 0 else Directions.BACK
 
 
+#region Especies y animaciones
+
+
 ## Aplica la animación para el personaje por su nombre. La dirección es automática
 func play_animation(anim_prefix: StringName) -> void:
 	sprites.play(anim_prefix + "_" + facing_direction)
+
+
+## Cambia la especie del personaje
+func set_species(new_species: Species) -> void:
+	sprites.sprite_frames = character_species[new_species]
+
+
+## Aleatoriza la especie del personaje
+func randomize_species() -> void:
+	species = Species.values().pick_random()
+
+
+#endregion
 
 
 #region RayCast e interaccción
