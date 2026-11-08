@@ -19,7 +19,7 @@ namespace DataStructures.Test
             string outputPath = Path.Combine("Test", "TestResults", "stack_benchmarks.csv");
             Directory.CreateDirectory(Path.GetDirectoryName(outputPath)!);
 
-            int[] dataSizes = { 1000, 10000, 50000, 100000, 500000, 1000000 };
+            int[] dataSizes = { 10, 100, 1000, 10000, 100000, 1000000 };
 
             using (StreamWriter writer = new StreamWriter(outputPath))
             {
@@ -41,11 +41,12 @@ namespace DataStructures.Test
                     sw.Stop();
                     double pushTime = sw.Elapsed.TotalMilliseconds;
 
-                    // 2. Prueba Peek - O(1) repetido
+                    // 2. Prueba Peek - Se acumula la suma de la salida para evitar que el JIT ignore la llamada
+                    int dummySum = 0;
                     sw.Restart();
-                    for (int i = 0; i < 10000; i++)
+                    for (int i = 0; i < n; i++)
                     {
-                        _ = stack.Peek();
+                        dummySum += stack.Peek();
                     }
                     sw.Stop();
                     double peekTime = sw.Elapsed.TotalMilliseconds;
