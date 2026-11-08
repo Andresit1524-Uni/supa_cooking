@@ -25,7 +25,7 @@ const Directions = {
 @onready var collision_shape: CollisionShape2D = $"CollisionShape"
 @onready var sprites: AnimatedSprite2D = $"Sprites"
 @onready var raycast: RayCast2D = $"RayCast"
-
+@onready var states: StateMachine = $States
 
 ## Dirección en la que apunta el personaje, para sus animaciones
 var facing_direction: StringName = Directions.FRONT
@@ -64,13 +64,19 @@ func update_raycast(direction: Vector2) -> void:
 	raycast.target_position = direction * raycast_size
 
 
-## Interactúa con el objeto que el raycast detecte
-func interact() -> void:
+## Interactúa con el objeto que el raycast detecte. Retorna si fué un exito o no
+func interact() -> bool:
 	_debug_raycast_interact()
-	if not raycast.is_colliding(): return
+	if not raycast.is_colliding(): return false
 
 	var target: CollisionObject2D = raycast.get_collider()
 	if target: object_interact.emit(target)
+	return target != null
+
+
+## Acaba con una interacción de manera externa
+func stop_interact() -> void:
+	states.current_state.to_state.emit(CharacterIdle)
 
 
 ## ! Debug: pinta el raycast cuando se interactúa

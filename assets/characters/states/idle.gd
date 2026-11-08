@@ -29,7 +29,9 @@ func physics_update(_delta: float) -> void:
 
 	# Interacción
 	if Input.is_action_just_pressed(&"interact"):
-		character.interact()
+		var interaction := character.interact()
+		if interaction: to_state.emit(CharacterStop)
+		return
 
 	character.velocity = Vector2.ZERO
 	character.move_and_slide()

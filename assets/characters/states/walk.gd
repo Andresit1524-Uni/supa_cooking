@@ -22,7 +22,9 @@ func physics_update(_delta: float) -> void:
 
 	# Interacción
 	if Input.is_action_just_pressed(&"interact"):
-		character.interact()
+		var interaction := character.interact()
+		if interaction: to_state.emit(CharacterStop)
+		return
 
 	character.update_facing_dir(direction)
 	character.update_raycast(direction)
