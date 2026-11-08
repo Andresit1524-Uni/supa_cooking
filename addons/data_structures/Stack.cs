@@ -43,9 +43,8 @@ public class Stack<T> : DynamicArray<T>
     // Comparar si es igual o no a otro stack
     public bool Equals(Stack<T> pila)
     {
-        if (pila is not Stack<T> other) return false;
-        if (ReferenceEquals(this, other)) return true;
-        if (Size != other.Size) return false;
+        if (ReferenceEquals(this, pila)) return true;
+        if (Size != pila.Size) return false;
         for (int i = 0; i < Size; i++)
         {
             if (!this[i].Equals(pila[i])) return false;
