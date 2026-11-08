@@ -78,8 +78,7 @@ func set_species(new_species: Species) -> void:
 
 ## Aleatoriza la especie del personaje
 func randomize_species() -> void:
-	var new = Species.values().pick_random()
-	species = new
+	species = Species.values().pick_random()
 
 
 #endregion
