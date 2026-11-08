@@ -15,17 +15,16 @@ namespace DataStructures.Test
     {
         public static void RunBenchmarks()
         {
-            // Asegurar que exista el directorio de resultados
             string outputPath = Path.Combine("Test", "TestResults", "dynamic_array_benchmarks.csv");
             Directory.CreateDirectory(Path.GetDirectoryName(outputPath)!);
 
-            int[] dataSizes = { 1000, 5000, 10000, 50000, 100000, 500000 };
+            // Ajustado a potencias de 10 hasta 1,000,000
+            int[] dataSizes = { 10, 100, 1000, 10000, 100000, 1000000 };
+            Random random = new Random(42); // Semilla fija para reproducibilidad
 
             using (StreamWriter writer = new StreamWriter(outputPath))
             {
-                // Encabezados del CSV
                 writer.WriteLine("N,AddLast_ms,AddFirst_ms,RemoveLast_ms,Search_ms");
-
                 Console.WriteLine("Iniciando pruebas para DynamicArray...");
 
                 foreach (int n in dataSizes)
@@ -40,9 +39,10 @@ namespace DataStructures.Test
                     sw.Stop();
                     double addLastTime = sw.Elapsed.TotalMilliseconds;
 
-                    // 2. Prueba Search - O(n) peores casos (buscando elemento al final o inexistente)
+                    // 2. Prueba Search - Caso promedio con valores aleatorios
+                    int targetValue = random.Next(0, n); // Buscar un elemento aleatorio que existe en el rango
                     sw.Restart();
-                    arrayForAdd.Search(-1); // Forzar recorrido completo
+                    int foundIndex = arrayForAdd.Search(targetValue);
                     sw.Stop();
                     double searchTime = sw.Elapsed.TotalMilliseconds;
 
@@ -55,25 +55,23 @@ namespace DataStructures.Test
                     sw.Stop();
                     double removeLastTime = sw.Elapsed.TotalMilliseconds;
 
-                    // 4. Prueba AddFirst - O(n) debido a desplazamientos constantes
+                    // 4. Prueba AddFirst - O(n) desplazando elementos con el N exacto
+                    // Nota: En N = 1,000,000 tomará un par de segundos debido a O(n^2) total, pero mantendrá la medición precisa
                     DynamicArray<int> arrayForAddFirst = new DynamicArray<int>();
                     sw.Restart();
-                    // Uso de un N más pequeño si N > 50000 para evitar pruebas excesivamente largas en O(n^2) total
-                    int addFirstN = n > 50000 ? 50000 : n; 
-                    for (int i = 0; i < addFirstN; i++)
+                    for (int i = 0; i < n; i++)
                     {
                         arrayForAddFirst.AddFirst(i);
                     }
                     sw.Stop();
                     double addFirstTime = sw.Elapsed.TotalMilliseconds;
 
-                    // Guardar fila en CSV
                     writer.WriteLine($"{n},{addLastTime:F4},{addFirstTime:F4},{removeLastTime:F4},{searchTime:F4}");
-                    Console.WriteLine($"Completado N = {n}");
+                    Console.WriteLine($"[DynamicArray] Completado N = {n}");
                 }
             }
 
-            Console.WriteLine($"Resultados guardados en: {outputPath}");
+            Console.WriteLine($"Resultados de DynamicArray guardados en: {outputPath}");
         }
     }
 }
