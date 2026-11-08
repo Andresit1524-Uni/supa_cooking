@@ -8,9 +8,9 @@
 [ext_resource type="Script" uid="uid://vjxc8slu31e3" path="res://assets/characters/states/idle.gd" id="3_xgakl"]
 [ext_resource type="SpriteFrames" uid="uid://bg6ridn0f5vds" path="res://assets/characters/sprite_frames/car_orange_frames.tres" id="4_v6qhx"]
 [ext_resource type="Script" uid="uid://cmpdfee8bl1r8" path="res://assets/characters/states/walk.gd" id="4_w4adg"]
-[ext_resource type="Script" uid="uid://dfd4fxstpt1f1" path="res://assets/characters/states/stop.gd" id="6_aqda1"]
 [ext_resource type="SpriteFrames" uid="uid://diwd53l7yelhp" path="res://assets/characters/sprite_frames/cat_gray_frames.tres" id="5_tac7r"]
 [ext_resource type="SpriteFrames" uid="uid://3mn1cdg862ux" path="res://assets/characters/sprite_frames/fox_frames.tres" id="6_1brio"]
+[ext_resource type="Script" uid="uid://dfd4fxstpt1f1" path="res://assets/characters/states/stop.gd" id="6_aqda1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t44h5"]
 radius = 5.0
