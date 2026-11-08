@@ -17,7 +17,7 @@ radius = 5.0
 
 [node name="Character" type="CharacterBody2D" unique_id=241359676]
 script = ExtResource("1_yufif")
-speed = 64.0
+speed = 120.0
 character_species = Dictionary[int, SpriteFrames]({
 0: ExtResource("2_yufif"),
 1: ExtResource("3_tc538"),

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://jff17hawyr7q"
-path="res://.godot/imported/modern_tiles_overview.png-3ffe7cb3c4427e8a4270132c725a3f48.ctex"
+path="res://.godot/imported/modern_tiles_overview.png-dbcee712f6a95b575d27f66a4d5b4b34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/environments/modern_tiles_overview.png"
-dest_files=["res://.godot/imported/modern_tiles_overview.png-3ffe7cb3c4427e8a4270132c725a3f48.ctex"]
+source_file="res://assets/kitchen/tilemaps/modern_tiles_overview.png"
+dest_files=["res://.godot/imported/modern_tiles_overview.png-dbcee712f6a95b575d27f66a4d5b4b34.ctex"]
 
 [params]
 
