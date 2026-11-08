@@ -41,10 +41,6 @@ const Directions = {
 var facing_direction: StringName = Directions.FRONT
 
 
-func _ready() -> void:
-	randomize_species()
-
-
 ## Obtiene la dirección del movimiento de forma centralizada
 func get_input_vector() -> Vector2:
 	return Input.get_vector(&"left", &"right", &"up", &"down")
