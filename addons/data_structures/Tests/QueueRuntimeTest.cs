@@ -19,7 +19,7 @@ namespace DataStructures.Test
             string outputPath = Path.Combine("Test", "TestResults", "queue_benchmarks.csv");
             Directory.CreateDirectory(Path.GetDirectoryName(outputPath)!);
 
-            int[] dataSizes = { 1000, 10000, 50000, 100000, 500000, 1000000 };
+            nt[] dataSizes = { 10, 100, 1000, 10000, 100000, 1000000 };
 
             using (StreamWriter writer = new StreamWriter(outputPath))
             {
@@ -41,11 +41,12 @@ namespace DataStructures.Test
                     sw.Stop();
                     double enqueueTime = sw.Elapsed.TotalMilliseconds;
 
-                    // 2. Prueba Peek - O(1)
+                    // 2. Prueba Peek - O(1) - Se guarda el valor devuelto para evitar eliminación por JIT
+                    int dummySum = 0;
                     sw.Restart();
-                    for (int i = 0; i < 10000; i++)
+                    for (int i = 0; i < n; i++)
                     {
-                        _ = queue.Peek();
+                        dummySum += queue.Peek();
                     }
                     sw.Stop();
                     double peekTime = sw.Elapsed.TotalMilliseconds;
