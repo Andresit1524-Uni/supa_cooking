@@ -41,6 +41,7 @@ public class Queue<T> : DynamicArray<T>
         if (IsVoid) throw new InvalidOperationException("La cola esta vacia");
         T item = _data[_front];
         _front = (_front + 1) % _capacity;
+        _size--;
         return item;
     }
 
@@ -63,20 +64,5 @@ public class Queue<T> : DynamicArray<T>
         _capacity = newCapacity;
         _front = 0;
         _rear = _size;
-    }
-
-    // Es igual a otra cola?
-    public bool Equals(Queue<T> que)
-    {
-        if (que == null) return false;
-        if (_capacity != que._capacity) return false;
-        if (Size != que.Size) return false;
-        for (int i = 0; i < Size; i++)
-        {
-            T a = this[(_front + i) % _capacity];
-            T b = que[(_front + i) % _capacity];
-            if (ReferenceEquals(a, b)) return false;
-        }
-        return true;
     }
 }
