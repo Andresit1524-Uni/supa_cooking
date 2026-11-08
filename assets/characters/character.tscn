@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://kessanjc54ud"]
 
-[ext_resource type="SpriteFrames" uid="uid://b3hopty65wxmd" path="res://assets/characters/raccoon_frames.tres" id="1_odcv2"]
+[ext_resource type="SpriteFrames" uid="uid://b3hopty65wxmd" path="res://assets/characters/sprite_frames/raccoon_frames.tres" id="1_odcv2"]
 [ext_resource type="Script" uid="uid://bmwsqkgtyl6id" path="res://assets/characters/character.gd" id="1_yufif"]
 [ext_resource type="Script" uid="uid://bxs53es51hc4u" path="res://addons/state_machine/state_machine.gd" id="2_l3hlb"]
+[ext_resource type="SpriteFrames" uid="uid://chb84aqwcb1w8" path="res://assets/characters/sprite_frames/bird_blue_frames.tres" id="2_yufif"]
+[ext_resource type="SpriteFrames" uid="uid://bijpd1k0wopwk" path="res://assets/characters/sprite_frames/bird_white_frames.tres" id="3_tc538"]
 [ext_resource type="Script" uid="uid://vjxc8slu31e3" path="res://assets/characters/states/idle.gd" id="3_xgakl"]
+[ext_resource type="SpriteFrames" uid="uid://bg6ridn0f5vds" path="res://assets/characters/sprite_frames/car_orange_frames.tres" id="4_v6qhx"]
 [ext_resource type="Script" uid="uid://cmpdfee8bl1r8" path="res://assets/characters/states/walk.gd" id="4_w4adg"]
+[ext_resource type="SpriteFrames" uid="uid://diwd53l7yelhp" path="res://assets/characters/sprite_frames/cat_gray_frames.tres" id="5_tac7r"]
+[ext_resource type="SpriteFrames" uid="uid://3mn1cdg862ux" path="res://assets/characters/sprite_frames/fox_frames.tres" id="6_1brio"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t44h5"]
 radius = 5.0
@@ -12,6 +17,14 @@ radius = 5.0
 [node name="Character" type="CharacterBody2D" unique_id=241359676]
 script = ExtResource("1_yufif")
 speed = 64.0
+character_species = Dictionary[int, SpriteFrames]({
+0: ExtResource("2_yufif"),
+1: ExtResource("3_tc538"),
+2: ExtResource("4_v6qhx"),
+3: ExtResource("5_tac7r"),
+4: ExtResource("6_1brio"),
+5: ExtResource("1_odcv2")
+})
 
 [node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=801409164]
 sprite_frames = ExtResource("1_odcv2")
