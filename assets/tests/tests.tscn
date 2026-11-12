@@ -9,3 +9,10 @@ position = Vector2(-28, -31)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1459750119]
 zoom = Vector2(4, 4)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1386630898]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=685468221]
+polygon = PackedVector2Array(11, -17, 52, 10, -17, 18)

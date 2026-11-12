@@ -8,20 +8,29 @@ var character: Character
 
 func start() -> void:
 	character = controlled_node as Character
-	await character.ready
 
-	if character:
-		character.velocity = Vector2.ZERO
-		character.play_animation(&"idle")
+	# Primer arranque del personaje para evitar crashes
+	if not character.is_node_ready():
+		await character.ready
+
+	character.velocity = Vector2.ZERO
+	character.play_animation(&"idle")
 
 
 func physics_update(_delta: float) -> void:
-	if not character:
-		return
+	if not character: return
 
 	var direction := character.get_input_vector()
+
+	# Caminata
 	if direction != Vector2.ZERO:
 		to_state.emit(CharacterWalk)
+		return
+
+	# Interacción
+	if Input.is_action_just_pressed(&"interact"):
+		var interaction := character.interact()
+		if interaction: to_state.emit(CharacterStop)
 		return
 
 	character.velocity = Vector2.ZERO
