@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using DataStructures;
 
 /// <summary>
 /// Prueba de tiempos de ejecución para queue circular genérico. 
@@ -11,15 +10,15 @@ using DataStructures;
 /// </remarks>
 namespace DataStructures.Test
 {
-    public class QueueTest
+    public class QueueRuntimeTest
     {
         public static void RunBenchmarks()
         {
             // Asegurar que exista el directorio de resultados
-            string outputPath = Path.Combine("Test", "TestResults", "queue_benchmarks.csv");
+            string outputPath = Path.Combine("test_results", "queue_benchmarks.csv");
             Directory.CreateDirectory(Path.GetDirectoryName(outputPath)!);
 
-            nt[] dataSizes = { 10, 100, 1000, 10000, 100000, 1000000 };
+            int[] dataSizes = { 10, 100, 1000, 10000, 100000, 1000000 };
 
             using (StreamWriter writer = new StreamWriter(outputPath))
             {

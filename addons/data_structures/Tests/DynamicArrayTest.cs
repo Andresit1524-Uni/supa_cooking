@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using DataStructures;
 
 /// <summary>
 /// Prueba de tiempos de ejecución para arreglo dinámico genérico.
@@ -15,7 +14,7 @@ namespace DataStructures.Test
     {
         public static void RunBenchmarks()
         {
-            string outputPath = Path.Combine("Test", "TestResults", "dynamic_array_benchmarks.csv");
+            string outputPath = Path.Combine("test_results", "dynamic_array_benchmarks.csv");
             Directory.CreateDirectory(Path.GetDirectoryName(outputPath)!);
 
             // Ajustado a potencias de 10 hasta 1,000,000

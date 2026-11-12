@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using DataStructures;
 
 /// <summary>
 /// Prueba de tiempos de ejecución para stack genérico que usa un DynamicArray. 
@@ -11,12 +10,12 @@ using DataStructures;
 /// </remarks>
 namespace DataStructures.Test
 {
-    public class StackTest
+    public class StackRuntimeTest
     {
         public static void RunBenchmarks()
         {
             // Asegurar que exista el directorio de resultados
-            string outputPath = Path.Combine("Test", "TestResults", "stack_benchmarks.csv");
+            string outputPath = Path.Combine("test_results", "stack_benchmarks.csv");
             Directory.CreateDirectory(Path.GetDirectoryName(outputPath)!);
 
             int[] dataSizes = { 10, 100, 1000, 10000, 100000, 1000000 };
