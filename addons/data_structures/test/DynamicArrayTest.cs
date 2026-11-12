@@ -18,12 +18,12 @@ namespace DataStructures.Test
             Directory.CreateDirectory(Path.GetDirectoryName(outputPath)!);
 
             // Ajustado a potencias de 10 hasta 1,000,000
-            int[] dataSizes = { 10, 100, 1000, 10000, 100000, 1000000 };
+            int[] dataSizes = { 10, 100, 1000, 10000, 100000 };
             Random random = new Random(42); // Semilla fija para reproducibilidad
 
             using (StreamWriter writer = new StreamWriter(outputPath))
             {
-                writer.WriteLine("N,AddLast_ms,AddFirst_ms,RemoveLast_ms,Search_ms");
+                writer.WriteLine("N; AddLast (ms); AddFirst (ms); RemoveLast (ms); Search (ms)");
                 Console.WriteLine("Iniciando pruebas para DynamicArray...");
 
                 foreach (int n in dataSizes)
@@ -65,7 +65,7 @@ namespace DataStructures.Test
                     sw.Stop();
                     double addFirstTime = sw.Elapsed.TotalMilliseconds;
 
-                    writer.WriteLine($"{n},{addLastTime:F4},{addFirstTime:F4},{removeLastTime:F4},{searchTime:F4}");
+                    writer.WriteLine($"{n}; {addLastTime:F4}; {addFirstTime:F4}; {removeLastTime:F4}; {searchTime:F4}");
                     Console.WriteLine($"[DynamicArray] Completado N = {n}");
                 }
             }

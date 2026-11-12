@@ -18,12 +18,12 @@ namespace DataStructures.Test
             string outputPath = Path.Combine("test_results", "queue_benchmarks.csv");
             Directory.CreateDirectory(Path.GetDirectoryName(outputPath)!);
 
-            int[] dataSizes = { 10, 100, 1000, 10000, 100000, 1000000 };
+            int[] dataSizes = { 10, 100, 1000, 10000, 100000 };
 
             using (StreamWriter writer = new StreamWriter(outputPath))
             {
                 // Encabezados del CSV
-                writer.WriteLine("N,Enqueue_ms,Peek_ms,Dequeue_ms");
+                writer.WriteLine("N; Enqueue (ms); Peek (ms); Dequeue (ms)");
 
                 Console.WriteLine("Iniciando pruebas para Queue...");
 
@@ -60,7 +60,7 @@ namespace DataStructures.Test
                     double dequeueTime = sw.Elapsed.TotalMilliseconds;
 
                     // Guardar fila en CSV
-                    writer.WriteLine($"{n},{enqueueTime:F4},{peekTime:F4},{dequeueTime:F4}");
+                    writer.WriteLine($"{n}; {enqueueTime:F4}; {peekTime:F4}; {dequeueTime:F4}");
                     Console.WriteLine($"Completado N = {n}");
                 }
             }

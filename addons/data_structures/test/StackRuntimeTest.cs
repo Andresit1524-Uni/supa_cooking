@@ -18,12 +18,12 @@ namespace DataStructures.Test
             string outputPath = Path.Combine("test_results", "stack_benchmarks.csv");
             Directory.CreateDirectory(Path.GetDirectoryName(outputPath)!);
 
-            int[] dataSizes = { 10, 100, 1000, 10000, 100000, 1000000 };
+            int[] dataSizes = { 10, 100, 1000, 10000, 100000 };
 
             using (StreamWriter writer = new StreamWriter(outputPath))
             {
                 // Encabezados del CSV
-                writer.WriteLine("N,Push_ms,Peek_ms,Pop_ms");
+                writer.WriteLine("N; Push (ms); Peek (ms); Pop (ms)");
 
                 Console.WriteLine("Iniciando pruebas para Stack...");
 
@@ -60,7 +60,7 @@ namespace DataStructures.Test
                     double popTime = sw.Elapsed.TotalMilliseconds;
 
                     // Guardar fila en CSV
-                    writer.WriteLine($"{n},{pushTime:F4},{peekTime:F4},{popTime:F4}");
+                    writer.WriteLine($"{n}; {pushTime:F4}; {peekTime:F4}; {popTime:F4}");
                     Console.WriteLine($"Completado N = {n}");
                 }
             }
