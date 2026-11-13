@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 script = ExtResource("1_ugmua")
-capacity = 133
+tile_scene = ExtResource("1_rv541")
 
 [node name="Tile" parent="." unique_id=1500374953 instance=ExtResource("1_rv541")]
 layout_mode = 2

@@ -1,20 +1,37 @@
 class_name TileBar extends HBoxContainer
 
 
-@export var capacity: int = 5:
-	set = set_capacity
+@export_range(0, 100) var capacity: int = 5:
+	set(value):
+		capacity = value
+		if not is_node_ready(): await ready
+		set_capacity()
+
+@export_group("Dependencias")
+@export var tile_scene: PackedScene
 
 
-## Actualiza la capacidad del inventario. Lo limpia cuando pasa esto
-func set_capacity(new_size: int) -> void:
-	# Nuevas casillas
-	var new_tiles: Array = range(new_size).map(func(_i): return Tile.new())
+func _ready() -> void:
+	set_capacity()
 
-	# Borra los hijos
-	for child in get_children():
+
+## Actualiza la capacidad del inventario
+func set_capacity() -> void:
+	if not tile_scene:
+		return
+
+	# Diferencia
+	var diff := capacity - get_child_count()
+	if diff == 0: return
+
+	# Añade los faltantes
+	if diff > 0:
+		for i in diff:
+			add_child(tile_scene.instantiate())
+		return
+
+	# Elimina los sobrantes
+	for i in -diff:
+		var child := get_child(get_child_count() - 1)
+		remove_child(child)
 		child.queue_free()
-		await child.tree_exited
-
-	# Añade los nuevos
-	for tile: Tile in new_tiles:
-		add_child(tile)

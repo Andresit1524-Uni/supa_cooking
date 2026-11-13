@@ -25,6 +25,7 @@ offset_top = -75.0
 offset_right = 108.0
 offset_bottom = -35.0
 grow_vertical = 0
+capacity = 10
 
 [node name="Character" parent="." unique_id=241359676 instance=ExtResource("1_fcv4q")]
 position = Vector2(-28, -31)
