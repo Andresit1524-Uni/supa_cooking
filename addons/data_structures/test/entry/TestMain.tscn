@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bmqq62vmgmkrn"]
+
+[ext_resource type="Script" uid="uid://csyshxqn8tgu0" path="res://addons/data_structures/test/entry/TestMain.cs" id="1_kk4u3"]
+
+[node name="TestMain" type="Control" unique_id=1112956518]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kk4u3")
+
+[node name="Label" type="Label" parent="." unique_id=1329827315]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Ejecuta esta escena con F6 para iniciar los benchmarks"

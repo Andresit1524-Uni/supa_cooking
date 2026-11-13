@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://2bo45on4og2o"
-path="res://.godot/imported/kitchen_n_more_tileset.png-9de3dcaa1064626d40808d75c938c8e2.ctex"
+path="res://.godot/imported/kitchen_n_more_tileset.png-4a4b73b47990545ec6df12746585677b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/environments/kitchen_n_more_tileset.png"
-dest_files=["res://.godot/imported/kitchen_n_more_tileset.png-9de3dcaa1064626d40808d75c938c8e2.ctex"]
+source_file="res://assets/kitchen/tilemaps/kitchen_n_more_tileset.png"
+dest_files=["res://.godot/imported/kitchen_n_more_tileset.png-4a4b73b47990545ec6df12746585677b.ctex"]
 
 [params]
 
