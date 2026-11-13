@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://qdr25ofcwlkd"]
+
+[ext_resource type="PackedScene" uid="uid://bwy3ex4xejafu" path="res://assets/inventory/tile.tscn" id="1_rv541"]
+[ext_resource type="Script" uid="uid://bvyvu03l04dva" path="res://assets/inventory/tile_bar.gd" id="1_ugmua"]
+
+[node name="InventoryBar" type="HBoxContainer" unique_id=549978041]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("1_ugmua")
+capacity = 133
+
+[node name="Tile" parent="." unique_id=1500374953 instance=ExtResource("1_rv541")]
+layout_mode = 2
+
+[node name="Tile2" parent="." unique_id=841327696 instance=ExtResource("1_rv541")]
+layout_mode = 2
+
+[node name="Tile3" parent="." unique_id=1481147470 instance=ExtResource("1_rv541")]
+layout_mode = 2
+
+[node name="Tile4" parent="." unique_id=1121892437 instance=ExtResource("1_rv541")]
+layout_mode = 2
+
+[node name="Tile5" parent="." unique_id=1382716417 instance=ExtResource("1_rv541")]
+layout_mode = 2
