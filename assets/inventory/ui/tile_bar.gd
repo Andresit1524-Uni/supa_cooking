@@ -1,5 +1,5 @@
 ## Clase que gestiona la barra del inventario
-class_name TileBar extends HBoxContainer
+class_name TileBar extends GridContainer
 
 
 ## Capacidad del inventario
