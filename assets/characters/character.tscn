@@ -11,6 +11,7 @@
 [ext_resource type="SpriteFrames" uid="uid://diwd53l7yelhp" path="res://assets/characters/sprite_frames/cat_gray_frames.tres" id="5_tac7r"]
 [ext_resource type="SpriteFrames" uid="uid://3mn1cdg862ux" path="res://assets/characters/sprite_frames/fox_frames.tres" id="6_1brio"]
 [ext_resource type="Script" uid="uid://dfd4fxstpt1f1" path="res://assets/characters/states/stop.gd" id="6_aqda1"]
+[ext_resource type="Script" uid="uid://k1606dg5swm4" path="res://assets/inventory/inventory.gd" id="8_v6qhx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t44h5"]
 radius = 5.0
@@ -42,6 +43,9 @@ target_position = Vector2(0, 15)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Inventory" type="Node" parent="." unique_id=468942546]
+script = ExtResource("8_v6qhx")
 
 [node name="States" type="Node" parent="." unique_id=2003824761 node_paths=PackedStringArray("controlled_node", "default_state")]
 script = ExtResource("2_l3hlb")
