@@ -5813,3 +5813,24 @@ position = Vector2(-8, -92)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1202673926]
 shape = SubResource("RectangleShape2D_uxv61")
+
+[node name="Control" type="Control" parent="." unique_id=1634190846]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=831739832]
+layout_mode = 0
+offset_left = -249.0
+offset_top = -97.0
+offset_right = -209.0
+offset_bottom = -74.0
+text = "TIMER"
+
+[node name="TabBar" type="TabBar" parent="Control" unique_id=1520738402]
+layout_mode = 0
+offset_left = 204.0
+offset_top = -116.0
+offset_right = 244.0
+offset_bottom = -76.0
