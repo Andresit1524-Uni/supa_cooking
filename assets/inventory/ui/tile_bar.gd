@@ -1,3 +1,4 @@
+## Clase que gestiona la barra del inventario
 class_name TileBar extends HBoxContainer
 
 
@@ -6,7 +7,7 @@ class_name TileBar extends HBoxContainer
 	set(value):
 		capacity = value
 		if not is_node_ready(): await ready
-		set_capacity()
+		_set_capacity()
 
 @export_group("Dependencias")
 ## Escena del [Tile] para las casillas
@@ -16,12 +17,13 @@ class_name TileBar extends HBoxContainer
 
 
 func _ready() -> void:
+	SignalBus.inventory_updated.connect(_update_bar)
 	for child: Tile in get_children():
 		child.food_sprites = food_sprites
 
 
-## Actualiza la capacidad del inventario y retorna si hubo cambios
-func set_capacity() -> bool:
+## Actualiza la capacidad de casillas y retorna si hubo cambios
+func _set_capacity() -> bool:
 	if not tile_scene: return false
 
 	# Diferencia
@@ -44,3 +46,15 @@ func set_capacity() -> bool:
 		child.queue_free()
 
 	return true
+
+
+## Actualiza la vista de las casillas a partir de los stacks de Inventory
+func _update_bar(stacks: Array[Inventory.Stack]) -> void:
+	for i in get_child_count():
+		var tile := get_child(i) as Tile
+		if not tile: continue
+
+		tile.set_data(
+			stacks[i].type if i < stacks.size() else FoodData.Ingredients.NONE,
+			stacks[i].count if i < stacks.size() else 0
+		)
