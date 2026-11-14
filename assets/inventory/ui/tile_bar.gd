@@ -63,4 +63,4 @@ func _update_bar(stacks: Array[Inventory.Stack]) -> void:
 ## Cambia la transparencia de las casillas
 func change_transparency(transparent: bool) -> void:
 	for child: Tile in get_children():
-		child.transparent = transparent
+		child.flat = transparent

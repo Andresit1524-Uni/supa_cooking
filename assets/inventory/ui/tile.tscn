@@ -9,7 +9,7 @@ font_size = 12
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Tile" type="Panel" unique_id=1592067458]
+[node name="Tile" type="Button" unique_id=1788302196]
 custom_minimum_size = Vector2(40, 40)
 anchors_preset = 8
 anchor_left = 0.5
@@ -22,10 +22,9 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+icon_alignment = 1
+expand_icon = true
 script = ExtResource("1_lgwwd")
-
-[node name="Sprite" type="Sprite2D" parent="." unique_id=1595616230]
-position = Vector2(20, 20)
 
 [node name="Label" type="Label" parent="." unique_id=198384286]
 layout_mode = 1
