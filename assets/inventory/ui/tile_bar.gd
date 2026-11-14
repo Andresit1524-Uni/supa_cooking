@@ -58,3 +58,9 @@ func _update_bar(stacks: Array[Inventory.Stack]) -> void:
 			stacks[i].type if i < stacks.size() else FoodData.Ingredients.NONE,
 			stacks[i].count if i < stacks.size() else 0
 		)
+
+
+## Cambia la transparencia de las casillas
+func change_transparency(transparent: bool) -> void:
+	for child: Tile in get_children():
+		child.transparent = transparent

@@ -2,12 +2,7 @@
 class_name Tile extends Panel
 
 
-## Margen, proporcional al tamaño de la casilla
-@export_range(0, 0.5, 0.05) var margin: float = 0.2:
-	set(value):
-		margin = value
-		_update_sprite()
-
+@export_group("Datos")
 ## Ingrediente que almacena la casilla
 @export var ingredient := FoodData.Ingredients.NONE:
 	set(value):
@@ -22,8 +17,23 @@ class_name Tile extends Panel
 		_update_label()
 
 
+@export_group("Interfaz")
+## Margen, proporcional al tamaño de la casilla
+@export_range(0, 0.5, 0.05) var margin: float = 0.2:
+	set(value):
+		margin = value
+		_update_sprite()
+
+## Hace la casilla transparente
+@export var transparent := false:
+	set(value):
+		transparent = value
+		_update_type()
+
+
 @onready var sprite: Sprite2D = $Sprite
 @onready var label: Label = $Label
+@onready var default_stylebox := get_theme_stylebox(&"panel")
 
 
 ## Sprites de las frutas. Inyectado por [TileBar]
@@ -52,6 +62,15 @@ func _update_label() -> void:
 func _set_sprite(new_ingredient: FoodData.Ingredients) -> void:
 	if not sprite or not food_sprites: return
 	sprite.texture = food_sprites.ingredient_sprites.get(new_ingredient)
+
+
+## Actualiza el tipo de panel del tile
+func _update_type() -> void:
+	@warning_ignore("incompatible_ternary")
+	add_theme_stylebox_override(
+		&"panel",
+		StyleBoxEmpty.new() if transparent else default_stylebox
+	)
 
 
 ## Cambia el tamaño y la posición del sprite

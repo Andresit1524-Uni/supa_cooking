@@ -6,6 +6,8 @@
 [sub_resource type="LabelSettings" id="LabelSettings_kqacf"]
 font = ExtResource("2_7gdmh")
 font_size = 12
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Tile" type="Panel" unique_id=1592067458]
 custom_minimum_size = Vector2(40, 40)
@@ -32,8 +34,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -12.0
+offset_left = -13.0
 offset_top = -12.0
+offset_right = -1.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "0"
