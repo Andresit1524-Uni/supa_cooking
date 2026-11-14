@@ -4,17 +4,17 @@ extends Node
 ## Lista de ingredientes disponibles
 enum Ingredients {
 	NONE,
-	TOMATO,
-	LETTUCE,
-	CHEESE,
 	BREAD,
-	MEAT,
+	CHEDDAR,
+	SAUSAGE,
+	STEAK,
+	TOMATO,
 }
 
 ## Lista de platos disponibles
 enum Dishes {
 	NONE,
-	SALAD,
-	BURGER,
+	HOTDOG,
 	SANDWICH,
+	STEAK,
 }
