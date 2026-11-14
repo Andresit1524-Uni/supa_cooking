@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="FoodSprites" format=3 uid="uid://bb4wv7he2i05p"]
+
+[ext_resource type="Script" uid="uid://be5qfg6d7mfb0" path="res://assets/data/food_sprites.gd" id="1_abetj"]
+[ext_resource type="Texture2D" uid="uid://dmt53kkyl7vsf" path="res://assets/food_sprites/ingredients/bread.png" id="1_l2pnn"]
+[ext_resource type="Texture2D" uid="uid://16f6x2k42xcf" path="res://assets/food_sprites/dishes/hotdog.png" id="1_tp661"]
+[ext_resource type="Texture2D" uid="uid://dkc1lymx8tlhx" path="res://assets/food_sprites/dishes/sandwich.png" id="2_8bifw"]
+[ext_resource type="Texture2D" uid="uid://wpejipr4p2dy" path="res://assets/food_sprites/ingredients/cheddar.png" id="2_cmvmw"]
+[ext_resource type="Texture2D" uid="uid://d1c3lwnq8qmnt" path="res://assets/food_sprites/ingredients/raw_steak.png" id="3_bp78a"]
+[ext_resource type="Texture2D" uid="uid://cstfng2kabj42" path="res://assets/food_sprites/dishes/steak.png" id="3_g3eqj"]
+[ext_resource type="Texture2D" uid="uid://dx4n8oldtnt0g" path="res://assets/food_sprites/ingredients/sausage.png" id="4_3jsbi"]
+[ext_resource type="Texture2D" uid="uid://cg3pjueeeeusg" path="res://assets/food_sprites/ingredients/tomato.png" id="8_bpf5x"]
+
+[resource]
+script = ExtResource("1_abetj")
+ingredient_sprites = Dictionary[int, Texture2D]({
+1: ExtResource("1_l2pnn"),
+2: ExtResource("2_cmvmw"),
+3: ExtResource("4_3jsbi"),
+4: ExtResource("3_bp78a"),
+5: ExtResource("8_bpf5x")
+})
+dish_sprites = Dictionary[int, Texture2D]({
+1: ExtResource("1_tp661"),
+2: ExtResource("2_8bifw"),
+3: ExtResource("3_g3eqj")
+})
+metadata/_custom_type_script = "uid://be5qfg6d7mfb0"
