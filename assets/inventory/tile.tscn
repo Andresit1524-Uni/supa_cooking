@@ -13,4 +13,5 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lgwwd")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1595616230]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1595616230]
+position = Vector2(20, 20)

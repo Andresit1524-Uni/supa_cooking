@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bwy3ex4xejafu" path="res://assets/inventory/tile.tscn" id="1_rv541"]
 [ext_resource type="Script" uid="uid://bvyvu03l04dva" path="res://assets/inventory/tile_bar.gd" id="1_ugmua"]
+[ext_resource type="Resource" uid="uid://bb4wv7he2i05p" path="res://assets/food_sprites/food_sprites.tres" id="3_xjvkx"]
 
 [node name="InventoryBar" type="HBoxContainer" unique_id=549978041]
 anchors_preset = 8
@@ -14,6 +15,7 @@ grow_vertical = 2
 alignment = 1
 script = ExtResource("1_ugmua")
 tile_scene = ExtResource("1_rv541")
+food_sprites = ExtResource("3_xjvkx")
 
 [node name="Tile" parent="." unique_id=1500374953 instance=ExtResource("1_rv541")]
 layout_mode = 2
