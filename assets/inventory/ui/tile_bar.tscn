@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://qdr25ofcwlkd"]
 
-[ext_resource type="PackedScene" uid="uid://bwy3ex4xejafu" path="res://assets/inventory/tile.tscn" id="1_rv541"]
-[ext_resource type="Script" uid="uid://bvyvu03l04dva" path="res://assets/inventory/tile_bar.gd" id="1_ugmua"]
+[ext_resource type="PackedScene" uid="uid://bwy3ex4xejafu" path="res://assets/inventory/ui/tile.tscn" id="1_rv541"]
+[ext_resource type="Script" uid="uid://bvyvu03l04dva" path="res://assets/inventory/ui/tile_bar.gd" id="1_ugmua"]
 [ext_resource type="Resource" uid="uid://bb4wv7he2i05p" path="res://assets/food_sprites/food_sprites.tres" id="3_xjvkx"]
 
 [node name="InventoryBar" type="HBoxContainer" unique_id=549978041]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bwy3ex4xejafu"]
 
-[ext_resource type="Script" uid="uid://lfkwmmvhxmoy" path="res://assets/inventory/tile.gd" id="1_lgwwd"]
+[ext_resource type="Script" uid="uid://lfkwmmvhxmoy" path="res://assets/inventory/ui/tile.gd" id="1_lgwwd"]
 
 [node name="Tile" type="PanelContainer" unique_id=1500374953]
 custom_minimum_size = Vector2(40, 40)
