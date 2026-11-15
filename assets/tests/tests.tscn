@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://kessanjc54ud" path="res://assets/characters/character.tscn" id="1_fcv4q"]
 [ext_resource type="PackedScene" uid="uid://qdr25ofcwlkd" path="res://assets/inventory/ui/tile_bar.tscn" id="2_bfpnb"]
 [ext_resource type="PackedScene" uid="uid://bjx2t4km6jwla" path="res://assets/characters/npc/npc_character.tscn" id="2_ha550"]
+[ext_resource type="PackedScene" uid="uid://b485qblfb0asb" path="res://assets/characters/npc/npc_queue.tscn" id="4_tobje"]
 
 [node name="Tests" type="Node2D" unique_id=367963234]
 
@@ -36,3 +37,7 @@ collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=685468221]
 polygon = PackedVector2Array(11, -17, 52, 10, -17, 18)
+
+[node name="NpcQueue" parent="." unique_id=1605309119 instance=ExtResource("4_tobje")]
+position = Vector2(-51, 15)
+npc_scene = ExtResource("2_ha550")

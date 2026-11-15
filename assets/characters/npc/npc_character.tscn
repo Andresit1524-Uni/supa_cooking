@@ -5,3 +5,7 @@
 
 [node name="Character" unique_id=241359676 instance=ExtResource("1_826mx")]
 script = ExtResource("2_mqa3k")
+
+[node name="RayCast" parent="." index="2" unique_id=1827380809]
+visible = false
+enabled = false

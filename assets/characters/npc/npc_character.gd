@@ -7,7 +7,6 @@ const pos_tolerance = 4.0
 
 ## Posición de destino
 @onready var target_position: Vector2 = global_position
-@onready var ray_cast: RayCast2D = $RayCast
 
 
 ## Indica si prioriza moverse en el eje horizontal (X) antes que en vertical (Y)
@@ -15,9 +14,7 @@ var side_first: bool = true
 
 
 func _ready() -> void:
-	# Desactiva el raycast
-	raycast.enabled = false
-	raycast.visible = false
+	species = Species.values().pick_random()
 
 
 ## Envía al NPC al destino. 'side' determina si prioriza horizontal (X) o vertical (Y)
@@ -50,3 +47,7 @@ func get_input_vector() -> Vector2:
 			return Vector2.LEFT if diff.x < 0 else Vector2.RIGHT
 
 	return Vector2.ZERO
+
+
+## Bloquea todas las interacciones
+func interact() -> bool: return false
