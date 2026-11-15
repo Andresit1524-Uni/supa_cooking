@@ -1,76 +1,119 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using Godot;
 
 /// <summary>
 /// Prueba de tiempos de ejecución para arreglo dinámico genérico.
 /// </summary>
 /// <remarks>
-/// Creado por Andres Sierra.
+/// Creado por Andres Sierra. Corregido por Andrés López
 /// </remarks>
 namespace DataStructures.Test
 {
     public class DynamicArrayTest
     {
+        static readonly string outputPath = Path.Combine("test_results", "dynamic_array_benchmarks.csv");
+        static readonly int[] dataSizes = [1, 10, 100, 1000, 10000, 100000];
+        static readonly Random random = new(42); // Semilla fija para reproducibilidad
+
         public static void RunBenchmarks()
         {
-            string outputPath = Path.Combine("test_results", "dynamic_array_benchmarks.csv");
+            // Calentamiento
+            TestAddLast(10);
+            TestAddFirst(10);
+            TestRemoveLast(10);
+            TestSearch(10);
+
             Directory.CreateDirectory(Path.GetDirectoryName(outputPath)!);
-
-            // Ajustado a potencias de 10 hasta 1,000,000
-            int[] dataSizes = { 10, 100, 1000, 10000, 100000 };
-            Random random = new Random(42); // Semilla fija para reproducibilidad
-
-            using (StreamWriter writer = new StreamWriter(outputPath))
+            using (StreamWriter writer = new(outputPath))
             {
-                writer.WriteLine("N; AddLast (ms); AddFirst (ms); RemoveLast (ms); Search (ms)");
-                Console.WriteLine("Iniciando pruebas para DynamicArray...");
+                writer.WriteLine("N; AddLast (ns); AddFirst (ns); RemoveLast (ns); Search (ns)");
+                GD.Print("Iniciando pruebas para DynamicArray...");
 
                 foreach (int n in dataSizes)
                 {
                     // 1. Prueba AddLast - O(1) amortizado
-                    DynamicArray<int> arrayForAdd = new DynamicArray<int>();
-                    Stopwatch sw = Stopwatch.StartNew();
-                    for (int i = 0; i < n; i++)
-                    {
-                        arrayForAdd.AddLast(i);
-                    }
-                    sw.Stop();
-                    double addLastTime = sw.Elapsed.TotalMilliseconds;
-
-                    // 2. Prueba Search - Caso promedio con valores aleatorios
-                    int targetValue = random.Next(0, n); // Buscar un elemento aleatorio que existe en el rango
-                    sw.Restart();
-                    int foundIndex = arrayForAdd.Search(targetValue);
-                    sw.Stop();
-                    double searchTime = sw.Elapsed.TotalMilliseconds;
-
-                    // 3. Prueba RemoveLast - O(1)
-                    sw.Restart();
-                    for (int i = 0; i < n; i++)
-                    {
-                        arrayForAdd.RemoveLast();
-                    }
-                    sw.Stop();
-                    double removeLastTime = sw.Elapsed.TotalMilliseconds;
-
+                    double addLastTime = TestAddLast(n);
                     // 4. Prueba AddFirst - O(n) desplazando elementos con el N exacto
-                    // Nota: En N = 1,000,000 tomará un par de segundos debido a O(n^2) total, pero mantendrá la medición precisa
-                    DynamicArray<int> arrayForAddFirst = new DynamicArray<int>();
-                    sw.Restart();
-                    for (int i = 0; i < n; i++)
-                    {
-                        arrayForAddFirst.AddFirst(i);
-                    }
-                    sw.Stop();
-                    double addFirstTime = sw.Elapsed.TotalMilliseconds;
+                    double addFirstTime = TestAddFirst(n);
+                    // 3. Prueba RemoveLast - O(1)
+                    double removeLastTime = TestRemoveLast(n);
+                    // 2. Prueba Search - Caso promedio con valores aleatorios
+                    double searchTime = TestSearch(n);
 
-                    writer.WriteLine($"{n}; {addLastTime:F4}; {addFirstTime:F4}; {removeLastTime:F4}; {searchTime:F4}");
-                    Console.WriteLine($"[DynamicArray] Completado N = {n}");
+                    writer.WriteLine($"{n}; {addLastTime:F0}; {addFirstTime:F0}; {removeLastTime:F0}; {searchTime:F0}");
+                    GD.Print($"[DynamicArray] Completado N = {n}");
                 }
             }
 
-            Console.WriteLine($"Resultados de DynamicArray guardados en: {outputPath}");
+            GD.Print($"Resultados de DynamicArray guardados en: {outputPath}");
+        }
+
+        private static double TestAddLast(int n)
+        {
+            DynamicArray<int> arrayForAdd = [];
+
+            Stopwatch sw = Stopwatch.StartNew();
+            for (int i = 0; i < n; i++)
+            {
+                arrayForAdd.AddLast(i);
+            }
+
+            sw.Stop();
+            return sw.Elapsed.TotalNanoseconds / n; // Promedio
+        }
+
+        private static double TestSearch(int n)
+        {
+            DynamicArray<int> arrayForAdd = [];
+            // Llena el arreglo
+            for (int i = 0; i < n; i++)
+            {
+                arrayForAdd.AddLast(random.Next(0, n));
+            }
+
+            Stopwatch sw = Stopwatch.StartNew();
+            for (int i = 0; i < n; i++)
+            {
+                _ = arrayForAdd.Search(random.Next(0, n));
+            }
+
+            sw.Stop();
+            return sw.Elapsed.TotalNanoseconds / n;
+        }
+
+        private static double TestRemoveLast(int n)
+        {
+            DynamicArray<int> arrayForAdd = [];
+            // Llena el arreglo
+            for (int i = 0; i < n; i++)
+            {
+                arrayForAdd.AddLast(i);
+            }
+
+            Stopwatch sw = Stopwatch.StartNew();
+            for (int i = 0; i < n; i++)
+            {
+                arrayForAdd.RemoveLast();
+            }
+
+            sw.Stop();
+            return sw.Elapsed.TotalNanoseconds / n;
+        }
+
+        private static double TestAddFirst(int n)
+        {
+            DynamicArray<int> arrayForAddFirst = [];
+
+            Stopwatch sw = Stopwatch.StartNew();
+            for (int i = 0; i < n; i++)
+            {
+                arrayForAddFirst.AddFirst(i);
+            }
+
+            sw.Stop();
+            return sw.Elapsed.TotalNanoseconds / n;
         }
     }
 }

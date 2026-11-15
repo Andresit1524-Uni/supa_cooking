@@ -2,7 +2,7 @@ using Godot;
 using DataStructures.Test;
 
 /// <summary>
-/// Orquestador de las pruebas de tiempo de ejecución de las estructuras de datos. 
+/// Orquestador de las pruebas de tiempo de ejecución de las estructuras de datos.
 /// </summary>
 /// <remarks>
 /// Creado por Andres Sierra y Andrés López.
