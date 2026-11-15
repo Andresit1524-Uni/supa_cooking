@@ -46,10 +46,8 @@ Las estructuras de datos usadas en el juego, todas implementadas manualmente (si
 
 - *Arreglo dinámico* (`DynamicArray`): base reutilizable; crece al llenarse y da acceso por índice.
   + *Pila y cola*: con el objetivo de asimilar el funcionamiento que tienen las estructuras de datos incluidas en Godot al expandirse automáticamente, heredamos esta clase en `Queue` y `Stack`.
-- *Pila* (`Stack`): se guardan ingredientes en pilas (LIFO).
-  + Desarrollo del inventario.
-- *Cola* (`Queue`): la cola de pedidos se atiende en orden (FIFO). Se diseña como una *cola circular*, de modo que encolar y desencolar no requieran trasladar los elementos del arreglo.
-  - Aún no implementada.
+- *Pila* (`Stack`): se guardan ingredientes en pilas (LIFO). Se utiliza en el desarrollo del inventario y en el lavado de platos.
+- *Cola* (`Queue`): la cola de pedidos se atiende en orden (FIFO). Se diseña como una *cola circular*, de modo que encolar y desencolar no requieran trasladar los elementos del arreglo. Aun no se ha implementado.
 
 = Análisis de complejidad
 
@@ -122,7 +120,7 @@ Esta solución es óptima porque, al usar estas estructuras, obtenemos un buen r
 
 = Video demostrativo
 // TODO: Enlace al video (clonar desde GitHub y ejecutar), máximo 8 minutos.
-// Formato: #link("URL")[Ver demostración]
+#link("https://drive.google.com/drive/folders/1T6RkmfKwqiI3A_qwUAXnAt1MS0oUVK8E?usp=sharing")[Ver demostración]
 
 = Conclusiones
 // TODO: Evaluar resultados y reflexionar sobre optimizaciones posibles
