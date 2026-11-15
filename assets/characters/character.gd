@@ -44,6 +44,7 @@ const Directions = {
 @onready var sprites: AnimatedSprite2D = $"Sprites"
 @onready var raycast: RayCast2D = $"RayCast"
 @onready var states: StateMachine = $States
+@onready var inventory: Node = $Inventory
 
 
 ## Dirección en la que apunta el personaje, para sus animaciones
