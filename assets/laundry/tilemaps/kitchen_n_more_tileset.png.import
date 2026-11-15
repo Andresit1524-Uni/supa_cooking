@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6a3cra0yw5ll"
-path="res://.godot/imported/interiors_32x32.png-cbc6960f8f3242b5024454d97de2c41e.ctex"
+uid="uid://x4u05nuqnhau"
+path="res://.godot/imported/kitchen_n_more_tileset.png-e05374a4c197c203e9d863319e41bbdc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/laundry/interiors_32x32.png"
-dest_files=["res://.godot/imported/interiors_32x32.png-cbc6960f8f3242b5024454d97de2c41e.ctex"]
+source_file="res://assets/laundry/tilemaps/kitchen_n_more_tileset.png"
+dest_files=["res://.godot/imported/kitchen_n_more_tileset.png-e05374a4c197c203e9d863319e41bbdc.ctex"]
 
 [params]
 
