@@ -5,6 +5,7 @@
 
 [node name="NpcQueue" type="Node2D" unique_id=1605309119]
 script = ExtResource("1_jksc1")
+npc_scene = ExtResource("2_11x1d")
 
 [node name="Character" parent="." unique_id=241359676 instance=ExtResource("2_11x1d")]
 

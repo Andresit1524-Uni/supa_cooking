@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://di687oi7tr1mb" path="res://assets/characters/npc/npc_character.gd" id="2_mqa3k"]
 
 [node name="Character" unique_id=241359676 instance=ExtResource("1_826mx")]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("2_mqa3k")
 
 [node name="RayCast" parent="." index="2" unique_id=1827380809]

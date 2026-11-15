@@ -5,7 +5,7 @@ const WALK_DISTANCE = 300
 
 
 ## Distancia entre personajes
-@export var distance: float = 15
+@export var distance: float = 20
 ## Cantidad de personajes
 @export var npc_count: int = 20
 

@@ -21,6 +21,20 @@ grow_vertical = 2
 layout_mode = 1
 offset_top = -75.0
 offset_bottom = -35.0
+<<<<<<< HEAD
+
+[node name="InventoryBar2" parent="CanvasLayer/UI" unique_id=288530972 instance=ExtResource("2_bfpnb")]
+layout_mode = 1
+anchors_preset = 5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_top = 164.0
+offset_bottom = 204.0
+grow_vertical = 1
+columns = 10
+capacity = 30
+=======
+>>>>>>> cf41a4f36f738061da35517e4bb4baba250669d9
 
 [node name="Character" parent="." unique_id=2017937401 instance=ExtResource("1_fcv4q")]
 position = Vector2(-28, -31)
