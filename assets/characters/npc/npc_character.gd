@@ -2,7 +2,7 @@
 class_name NPCCharacter extends Character
 
 ## Tolerancia en píxeles para considerar que llegó al objetivo
-const pos_tolerance = 4.0
+const pos_tolerance = 0.01
 
 
 ## Posición de destino

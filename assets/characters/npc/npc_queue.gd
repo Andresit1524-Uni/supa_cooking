@@ -44,12 +44,12 @@ func pop_npc() -> void:
 	if npc_count == 0: return
 
 	var front: NPCCharacter = npc_list.pop_front()
-	front.target_position += Vector2.LEFT * WALK_DISTANCE
+	front.send_to(to_global(Vector2.LEFT * WALK_DISTANCE), false)
 
 	# Adelanta los demás
 	for npc in npc_list:
-		npc.target_position += Vector2.UP * distance
+		npc.send_to(npc.global_position + Vector2.UP * distance, false)
 
 	# Elimina
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(10).timeout
 	front.queue_free()
