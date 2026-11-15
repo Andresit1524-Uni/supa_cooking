@@ -81,6 +81,8 @@ func play_animation(anim_prefix: StringName) -> void:
 
 ## Cambia la especie del personaje
 func set_species(new_species: Species) -> void:
+	species = new_species
+	if not is_node_ready() or not sprites: return
 	sprites.sprite_frames = character_species[new_species]
 
 

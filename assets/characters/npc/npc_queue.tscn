@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b485qblfb0asb"]
+
+[ext_resource type="Script" uid="uid://tksnjyy2cts6" path="res://assets/characters/npc/npc_queue.gd" id="1_jksc1"]
+[ext_resource type="PackedScene" uid="uid://bjx2t4km6jwla" path="res://assets/characters/npc/npc_character.tscn" id="2_11x1d"]
+
+[node name="NpcQueue" type="Node2D" unique_id=1605309119]
+script = ExtResource("1_jksc1")
+
+[node name="Character" parent="." unique_id=241359676 instance=ExtResource("2_11x1d")]
+
+[node name="Character2" parent="." unique_id=151654153 instance=ExtResource("2_11x1d")]
+position = Vector2(0, 15)
+
+[node name="Character3" parent="." unique_id=1366569221 instance=ExtResource("2_11x1d")]
+position = Vector2(0, 31)
