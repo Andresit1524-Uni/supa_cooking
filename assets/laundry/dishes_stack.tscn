@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://7px16x7kp3gh"]
+
+[ext_resource type="Script" uid="uid://bb2781fd3jlyq" path="res://assets/laundry/dishes_stack.gd" id="1_g3rxx"]
+[ext_resource type="Texture2D" uid="uid://cod1lghitkike" path="res://resources/foods/ghostpixxells_pixelfood/dish_pile.png" id="1_wq23x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3rxx"]
+size = Vector2(28, 61)
+
+[node name="clean_dishes" type="Area2D" unique_id=319919503]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_g3rxx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1264028480]
+position = Vector2(0, 19.55)
+shape = SubResource("RectangleShape2D_g3rxx")
+
+[node name="DishPile2" type="Sprite2D" parent="." unique_id=2001313427]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_wq23x")

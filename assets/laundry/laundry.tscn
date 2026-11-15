@@ -4,8 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://6a3cra0yw5ll" path="res://assets/laundry/tilemaps/interiors_32x32.png" id="2_5i0rc"]
 [ext_resource type="PackedScene" uid="uid://kessanjc54ud" path="res://assets/characters/character.tscn" id="2_luagr"]
 [ext_resource type="Texture2D" uid="uid://x4u05nuqnhau" path="res://assets/laundry/tilemaps/kitchen_n_more_tileset.png" id="3_vlsla"]
-[ext_resource type="Texture2D" uid="uid://cod1lghitkike" path="res://resources/foods/ghostpixxells_pixelfood/dish_pile.png" id="5_s88di"]
+[ext_resource type="Texture2D" uid="uid://biw6duuulou1e" path="res://resources/foods/ghostpixxells_pixelfood/bowl.png" id="5_3gwhs"]
 [ext_resource type="Script" uid="uid://byca5v0k1oap5" path="res://assets/laundry/interactuables.gd" id="5_vlsla"]
+[ext_resource type="PackedScene" uid="uid://7px16x7kp3gh" path="res://assets/laundry/dishes_stack.tscn" id="7_s88di"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gcl7t"]
 texture = ExtResource("1_r4nyq")
@@ -5753,12 +5754,6 @@ sources/0 = SubResource("TileSetAtlasSource_r4nyq")
 sources/2 = SubResource("TileSetAtlasSource_3gwhs")
 sources/3 = SubResource("TileSetAtlasSource_xofra")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lr07i"]
-size = Vector2(20, 70)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_crwbv"]
-size = Vector2(20, 70)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxv61"]
 size = Vector2(50, 70)
 
@@ -5787,35 +5782,13 @@ tile_set = SubResource("TileSet_crwbv")
 [node name="Character" parent="." unique_id=241359676 instance=ExtResource("2_luagr")]
 scale = Vector2(2, 2)
 
+[node name="Bowl" type="Sprite2D" parent="Character" unique_id=1169627049]
+position = Vector2(0, -14.499999)
+scale = Vector2(0.28125, 0.296875)
+texture = ExtResource("5_3gwhs")
+
 [node name="Interactuables" type="Node2D" parent="." unique_id=2136483944]
 script = ExtResource("5_vlsla")
-
-[node name="clean_dishes" type="Area2D" parent="Interactuables" unique_id=1984586316]
-position = Vector2(80, -92)
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactuables/clean_dishes" unique_id=1254041249]
-shape = SubResource("RectangleShape2D_lr07i")
-
-[node name="DishPile2" type="Sprite2D" parent="Interactuables/clean_dishes" unique_id=1317999642]
-position = Vector2(0, -23)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("5_s88di")
-
-[node name="dirty_dishes" type="Area2D" parent="Interactuables" unique_id=960142092]
-position = Vector2(-80, -93)
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactuables/dirty_dishes" unique_id=290553179]
-shape = SubResource("RectangleShape2D_crwbv")
-
-[node name="DishPile" type="Sprite2D" parent="Interactuables/dirty_dishes" unique_id=419464403]
-modulate = Color(0.5049, 0.51, 0.5049, 1)
-position = Vector2(0, -20.999992)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("5_s88di")
 
 [node name="dishwasher" type="Area2D" parent="Interactuables" unique_id=896831243]
 position = Vector2(-8, -92)
@@ -5825,23 +5798,38 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactuables/dishwasher" unique_id=1202673926]
 shape = SubResource("RectangleShape2D_uxv61")
 
+[node name="dirty_dishes" parent="Interactuables" unique_id=319919503 instance=ExtResource("7_s88di")]
+position = Vector2(-80, -113)
+
+[node name="DishPile2" parent="Interactuables/dirty_dishes" index="1" unique_id=2001313427]
+modulate = Color(0.21497375, 0.1456171, 0.041582152, 1)
+
+[node name="clean_dishes" parent="Interactuables" unique_id=1539902522 instance=ExtResource("7_s88di")]
+position = Vector2(79, -112)
+
 [node name="UI" type="Control" parent="." unique_id=1634190846]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="UI" unique_id=831739832]
+[node name="platos_faltantes" type="Label" parent="UI" unique_id=831739832]
 layout_mode = 0
-offset_left = -249.0
-offset_top = -97.0
-offset_right = -209.0
-offset_bottom = -74.0
-text = "TIMER"
+offset_left = -265.0
+offset_top = -138.0
+offset_right = -193.0
+offset_bottom = -89.0
+text = "Platos
+Faltantes"
+horizontal_alignment = 1
 
-[node name="TabBar" type="TabBar" parent="UI" unique_id=1520738402]
+[node name="no_platos" type="Label" parent="UI" unique_id=1190838199]
 layout_mode = 0
-offset_left = 204.0
-offset_top = -116.0
-offset_right = 244.0
-offset_bottom = -76.0
+offset_left = -264.0
+offset_top = -85.0
+offset_right = -192.0
+offset_bottom = -36.0
+horizontal_alignment = 1
+
+[editable path="Interactuables/dirty_dishes"]
+[editable path="Interactuables/clean_dishes"]

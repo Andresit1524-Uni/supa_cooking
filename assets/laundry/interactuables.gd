@@ -1,11 +1,13 @@
 extends Node2D
 
 @onready var Player: Character = $"../Character"
+@onready var bowl: Sprite2D = $"../Character/Bowl"
 
-
-@onready var clean_dishes: Area2D = $clean_dishes
-@onready var dirty_dishes: Area2D = $dirty_dishes
 @onready var dishwasher: Area2D = $dishwasher
+@onready var clean_dishes: platos = $clean_dishes
+@onready var dirty_dishes: platos = $dirty_dishes
+
+@onready var no_platos: Label = $"../UI/no_platos"
 
 #Esta variable define el orden en el que se interactua con los elementos
 var step:int = 0
@@ -14,9 +16,12 @@ var number_plates:int = randi_range(1,6)
 
 func _ready() -> void:
 	Player.connect("object_interact",_on_object_interact)
+	bowl.visible = false
 	print(number_plates)
 	
+	
 func _process(_delta: float) -> void:
+	no_platos.text = str(number_plates)
 	if number_plates == 0:
 		dirty_dishes.visible = false
 	else:
@@ -25,19 +30,10 @@ func _on_object_interact(object: CollisionObject2D) -> void:
 	match object:
 		null:
 			return
-		clean_dishes:
-			if step == 2:
-				print("ola causa")
-				number_plates -= 1
-				print(number_plates)
-				stop_interact()
-				step = 0
-			else:
-				stop_interact() 
-				return
 		dirty_dishes:
 			if step == 0:
-				print("ola pe")
+				bowl.visible = true
+				bowl.modulate = Color(1,1,1,1)
 				stop_interact() 
 				step += 1
 			else:
@@ -45,10 +41,22 @@ func _on_object_interact(object: CollisionObject2D) -> void:
 				return
 		dishwasher:
 			if step == 1:
-				print("ola pepito")
+				bowl.modulate = Color(0.947, 0.803, 0.769, 1.0)
 				stop_interact()
 				step += 1
 			else:
+				stop_interact() 
+				return
+		clean_dishes:
+			if step == 2:
+				print("no")
+				bowl.visible = false
+				number_plates -= 1
+				print(number_plates)
+				stop_interact()
+				step = 0
+			else:
+				print("no")
 				stop_interact() 
 				return
 
