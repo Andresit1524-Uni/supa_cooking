@@ -87,7 +87,7 @@ Para analizar el comportamiento real de estos métodos utilizaremos medidas de t
 - Esta medición es por cada método de cada estructura implementada, en un promedio de varios intentos.
 - Haremos una tabla de tiempos y una gráfica por cada estructura de datos.
 - Las gráficas serán en escala logarítmica para evidenciar todas las escalas adecuadamente.
-- Los tiempos se reportan en *milisegundos*.
+- Los tiempos se reportan en *nanosegundos*.
 
 Los datos están registrados en archivos CSV independientes dentro de `data/`.
 
