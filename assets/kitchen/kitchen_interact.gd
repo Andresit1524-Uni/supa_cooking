@@ -19,6 +19,8 @@ extends Node2D
 @onready var microwave: Area2D = $microwave
 @onready var stove: Area2D = $stove
 @onready var foodcupboard2: Area2D = $food_cupboard2
+@onready var queue: Area2D = $queue
+@onready var npcqueue: NPCQueue = $"../NpcQueue"
 
 
 
@@ -91,8 +93,12 @@ func _on_object_interact(object: CollisionObject2D) -> void:
 				await get_tree().create_timer(0.5).timeout
 				player.stop_interact()
 				return
-			
-			
+		queue:
+			if tile5.count != 0:
+				npcqueue.pop_npc()
+				tile5.count -= 1
+				await get_tree().create_timer(0.5).timeout
+				player.stop_interact()
 	return
 
 
