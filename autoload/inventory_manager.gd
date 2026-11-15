@@ -9,6 +9,10 @@ class Stack:
 	var type := FoodData.Ingredients.NONE
 	var count: int = 0
 
+	func _init(new_type: FoodData.Ingredients, new_count: int) -> void:
+		type = new_type
+		count = new_count
+
 	func is_full() -> bool:
 		return count >= MAX_SIZE
 
@@ -39,25 +43,23 @@ class Stack:
 
 
 ## Capacidad máxima del inventario (número de slots/stacks)
-@export_range(0, 20) var max_capacity: int = 5
+var max_capacity: int
 
 
 ## Lista de stacks del inventario
 var items: Array[Stack] = []
 
 
-func _ready() -> void:
-	_init_stacks()
-
-
 func _init_stacks() -> void:
 	items.clear()
 	for i in max_capacity:
-		items.append(Stack.new())
+		items.append(Stack.new(FoodData.Ingredients.NONE, 0))
 
 
 ## Añade los elementos dados y retorna la cuenta de cuántos fueron transferidos
-func push(type: FoodData.Ingredients, amount: int) -> int:
+func push(type: FoodData.Ingredients, amount: int, tilebar: TileBar) -> int:
+	max_capacity = tilebar.capacity
+	_init_stacks()
 	var remaining := amount
 
 	# Intentar stackear en stacks existentes del mismo tipo
@@ -74,7 +76,7 @@ func push(type: FoodData.Ingredients, amount: int) -> int:
 
 	var transferred := amount - remaining
 	if transferred > 0:
-		SignalBus.inventory_updated.emit(items)
+		tilebar._update_bar(items)
 	else:
 		push_warning("[Inventory] No hubo espacio suficiente")
 
@@ -82,7 +84,8 @@ func push(type: FoodData.Ingredients, amount: int) -> int:
 
 
 ## Retira los elementos dados y retorna la cuenta de cuántos fueron transferidos
-func pop(type: FoodData.Ingredients, amount: int) -> int:
+func pop(type: FoodData.Ingredients, amount: int, tilebar: TileBar) -> int:
+	max_capacity = tilebar.capacity
 	var remaining := amount
 
 	# Retirar en orden inverso (LIFO)
@@ -95,7 +98,7 @@ func pop(type: FoodData.Ingredients, amount: int) -> int:
 
 	var transferred := amount - remaining
 	if transferred > 0:
-		SignalBus.inventory_updated.emit(items)
+		tilebar._update_bar(items)
 	else:
 		push_warning("[Inventory] No hay elementos que retirar")
 

@@ -15,12 +15,14 @@ class_name TileBar extends GridContainer
 ## Recurso [FoodSprites] para acceder a los sprites
 @export var food_sprites: FoodSprites
 
+@export var objetive: TileBar
 
 func _ready() -> void:
 	SignalBus.inventory_updated.connect(_update_bar)
+	connect_pressed()
 	for child: Tile in get_children():
 		child.food_sprites = food_sprites
-
+	
 
 ## Actualiza la capacidad de casillas y retorna si hubo cambios
 func _set_capacity() -> bool:
@@ -64,3 +66,22 @@ func _update_bar(stacks: Array[Inventory.Stack]) -> void:
 func change_transparency(transparent: bool) -> void:
 	for child: Tile in get_children():
 		child.flat = transparent
+
+
+func connect_pressed() -> void:
+	for child: Tile in get_children():
+		if child.pressed.is_connected(func() :_on_child_pressed(child)):
+			continue
+		child.pressed.connect(func() :_on_child_pressed(child))
+
+func _on_child_pressed(child: Tile ):
+	_transfer_data(Inventory.Stack.new(child.ingredient, child.count), objetive)
+	
+
+
+func _transfer_data(items: Inventory.Stack, tilebar: TileBar) -> void:
+	print(items)
+	if tilebar == self:
+		return
+	var transfered := InventoryManager.push(items.type, items.count, tilebar)
+	InventoryManager.pop(items.type, transfered, self)

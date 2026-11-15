@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.7", "C#")
 
 FoodData="*res://autoload/food_data.gd"
 SignalBus="*res://autoload/signal_bus.gd"
+InventoryManager="*uid://k1606dg5swm4"
 
 [display]
 

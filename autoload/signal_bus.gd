@@ -6,3 +6,7 @@ extends Node
 
 ## Se emite cuando el inventario actualiza sus stacks
 signal inventory_updated(stacks: Array[Inventory.Stack])
+## Se emiten cuando se está interactuando con un almacén
+signal interact_shelf1()
+signal interact_shelf2()
+signal interact_fridge()
