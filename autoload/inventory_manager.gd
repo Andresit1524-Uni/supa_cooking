@@ -50,16 +50,17 @@ var max_capacity: int
 var items: Array[Stack] = []
 
 
-func _init_stacks() -> void:
-	items.clear()
+## Inicializa los stacks de los inventarios
+func _init_stacks(tilebar: TileBar) -> void:
+	if not items.is_empty():
+		return
+	max_capacity = tilebar.capacity
 	for i in max_capacity:
 		items.append(Stack.new(FoodData.Ingredients.NONE, 0))
 
 
 ## Añade los elementos dados y retorna la cuenta de cuántos fueron transferidos
 func push(type: FoodData.Ingredients, amount: int, tilebar: TileBar) -> int:
-	max_capacity = tilebar.capacity
-	_init_stacks()
 	var remaining := amount
 
 	# Intentar stackear en stacks existentes del mismo tipo
@@ -85,7 +86,6 @@ func push(type: FoodData.Ingredients, amount: int, tilebar: TileBar) -> int:
 
 ## Retira los elementos dados y retorna la cuenta de cuántos fueron transferidos
 func pop(type: FoodData.Ingredients, amount: int, tilebar: TileBar) -> int:
-	max_capacity = tilebar.capacity
 	var remaining := amount
 
 	# Retirar en orden inverso (LIFO)

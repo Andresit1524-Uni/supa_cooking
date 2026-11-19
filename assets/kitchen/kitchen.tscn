@@ -7,8 +7,6 @@
 [ext_resource type="Script" uid="uid://c1l2unurgbx14" path="res://assets/kitchen/kitchen_interact.gd" id="4_8kant"]
 [ext_resource type="Texture2D" uid="uid://dorpo33k0yci6" path="res://assets/kitchen/cook_ball.png" id="5_6mq0e"]
 [ext_resource type="PackedScene" uid="uid://qdr25ofcwlkd" path="res://assets/inventory/ui/tile_bar.tscn" id="6_k5vxi"]
-[ext_resource type="Texture2D" uid="uid://d1c3lwnq8qmnt" path="res://assets/food_sprites/ingredients/raw_steak.png" id="7_v8sfc"]
-[ext_resource type="Texture2D" uid="uid://cg3pjueeeeusg" path="res://assets/food_sprites/ingredients/tomato.png" id="8_uc300"]
 [ext_resource type="PackedScene" uid="uid://b485qblfb0asb" path="res://assets/characters/npc/npc_queue.tscn" id="10_nb2ra"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iqoqx"]
@@ -7680,11 +7678,8 @@ size = Vector2(30, 145)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v2ov2"]
 size = Vector2(29, 50)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksvsf"]
-size = Vector2(94.5, 63)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n0nhn"]
-size = Vector2(25.125, 26.125)
+size = Vector2(28.5625, 143.1875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tswlq"]
 size = Vector2(59, 91)
@@ -7772,37 +7767,13 @@ position = Vector2(-48, -133)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_6mq0e")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="interactuables" unique_id=93982614]
-position = Vector2(46, -419)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="interactuables/StaticBody2D" unique_id=450160772]
-position = Vector2(66, 286)
-shape = SubResource("RectangleShape2D_ksvsf")
-
 [node name="food_cupboard" type="Area2D" parent="interactuables" unique_id=283593522]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interactuables/food_cupboard" unique_id=1076800687]
-position = Vector2(178, -62.125)
+position = Vector2(176.28125, -3.59375)
 shape = SubResource("RectangleShape2D_n0nhn")
-
-[node name="Sprite2D" type="Sprite2D" parent="interactuables/food_cupboard" unique_id=2128181146]
-position = Vector2(176, -64)
-texture = ExtResource("7_v8sfc")
-
-[node name="food_cupboard2" type="Area2D" parent="interactuables" unique_id=865974246]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="interactuables/food_cupboard2" unique_id=397833502]
-position = Vector2(179, -35)
-shape = SubResource("RectangleShape2D_n0nhn")
-
-[node name="Sprite2D" type="Sprite2D" parent="interactuables/food_cupboard2" unique_id=1116216728]
-position = Vector2(179, -34)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("8_uc300")
 
 [node name="queue" type="Area2D" parent="interactuables" unique_id=1865014162]
 collision_layer = 2
@@ -7811,6 +7782,10 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interactuables/queue" unique_id=1350279746]
 position = Vector2(1, 144)
 shape = SubResource("RectangleShape2D_tswlq")
+
+[node name="NpcQueue" parent="interactuables/queue" unique_id=1605309119 instance=ExtResource("10_nb2ra")]
+position = Vector2(-2, 154)
+scale = Vector2(2, 2)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1537828046]
 
@@ -7829,6 +7804,8 @@ offset_top = -128.0
 offset_bottom = 0.0
 mouse_filter = 0
 
-[node name="NpcQueue" parent="." unique_id=1605309119 instance=ExtResource("10_nb2ra")]
-position = Vector2(-2, 154)
-scale = Vector2(2, 2)
+[node name="InventoryBar2" parent="CanvasLayer/UI" unique_id=288530972 instance=ExtResource("6_k5vxi")]
+layout_mode = 1
+offset_top = -296.0
+offset_bottom = -168.0
+mouse_filter = 0
