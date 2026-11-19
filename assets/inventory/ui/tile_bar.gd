@@ -17,6 +17,8 @@ class_name TileBar extends GridContainer
 
 @export var objetive: TileBar
 
+
+
 func _ready() -> void:
 	SignalBus.inventory_updated.connect(_update_bar)
 	connect_pressed()
@@ -75,12 +77,13 @@ func connect_pressed() -> void:
 		child.pressed.connect(func() :_on_child_pressed(child))
 
 func _on_child_pressed(child: Tile ):
+	if objetive == null:
+		return
 	_transfer_data(Inventory.Stack.new(child.ingredient, child.count), objetive)
 	
 
 
 func _transfer_data(items: Inventory.Stack, tilebar: TileBar) -> void:
-	print(items)
 	if tilebar == self:
 		return
 	var transfered := InventoryManager.push(items.type, items.count, tilebar)
